@@ -28,37 +28,82 @@
         </ul>
       </header>
       <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <p>Rhumsaa\Uuid is a PHP 5.3+ library for generating and working with <a href="http://tools.ietf.org/html/rfc4122">RFC 4122</a> version
+1, 3, 4, and 5 universally unique identifiers (UUID).</p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>From <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">Wikipedia</a>:</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<blockquote>
+<p>The intent of UUIDs is to enable distributed systems to uniquely identify information without significant central coordination. In this context the word unique should be taken to mean "practically unique" rather than "guaranteed unique". Since the identifiers have a finite size, it is possible for two differing items to share the same identifier. The identifier size and generation process need to be selected so as to make this sufficiently improbable in practice. Anyone can create a UUID and use it to identify something with reasonable confidence that the same identifier will never be unintentionally created by anyone to identify something else. Information labeled with UUIDs can therefore be later combined into a single database without needing to resolve identifier (ID) conflicts.</p>
+</blockquote>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Much inspiration for this library came from the <a href="http://docs.oracle.com/javase/6/docs/api/java/util/UUID.html">Java</a> and
+<a href="http://docs.python.org/3/library/uuid.html">Python</a> UUID libraries.</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<p>Please see <code>docs/</code> for generated API documentation.</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>Some methods in this library have requirements due to integer size restrictions
+on 32-bit and 64-bit builds of PHP. A 64-bit build of PHP and the <a href="https://github.com/moontoast/math">Moontoast\Math</a>
+library are recommended. However, this library is designed to work on 32-bit
+builds of PHP without Moontoast\Math, with some degraded functionality. Please
+check the API documention for more information.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>If a particular requirement is not present, then a <code>Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException</code>
+is thrown, allowing one to catch a bad call in an environment where the call is
+not supported and gracefully degrade.</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<span class="k">use</span> <span class="nx">Rhumsaa\Uuid\Uuid</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException</span><span class="p">;</span>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">// Generate a version 1 (time-based) UUID</span>
+    <span class="nv">$uuid1</span> <span class="o">=</span> <span class="nx">Uuid</span><span class="o">::</span><span class="na">uuid1</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="nv">$uuid1</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// e4eaaaf2-d142-11e1-b3e4-080027620cdd</span>
+
+    <span class="c1">// Generate a version 3 (name-based and hashed with MD5) UUID</span>
+    <span class="nv">$uuid3</span> <span class="o">=</span> <span class="nx">Uuid</span><span class="o">::</span><span class="na">uuid3</span><span class="p">(</span><span class="nx">Uuid</span><span class="o">::</span><span class="na">NAMESPACE_DNS</span><span class="p">,</span> <span class="s1">'php.net'</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$uuid3</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// 11a38b9a-b3da-360f-9353-a5a725514269</span>
+
+    <span class="c1">// Generate a version 4 (random) UUID</span>
+    <span class="nv">$uuid4</span> <span class="o">=</span> <span class="nx">Uuid</span><span class="o">::</span><span class="na">uuid4</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="nv">$uuid4</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// 25769c6c-d34d-4bfe-ba98-e0ee856f3e7a</span>
+
+    <span class="c1">// Generate a version 5 (name-based and hashed with SHA1) UUID</span>
+    <span class="nv">$uuid5</span> <span class="o">=</span> <span class="nx">Uuid</span><span class="o">::</span><span class="na">uuid5</span><span class="p">(</span><span class="nx">Uuid</span><span class="o">::</span><span class="na">NAMESPACE_DNS</span><span class="p">,</span> <span class="s1">'php.net'</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$uuid5</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// c4a760a8-dbcf-5254-a0d9-6a4474bd1b62</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">UnsatisfiedDependencyException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Some dependency was not met. Either the method cannot be called on a</span>
+    <span class="c1">// 32-bit system, or it can, but it relies on Moontoast\Math to be present.</span>
+    <span class="k">echo</span> <span class="s1">'Caught exception: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>The preferred method of installation is via <a href="http://packagist.org/">Packagist</a>, as this provides
+the PSR-0 autoloader functionality. The following <code>composer.json</code> will download
+and install the latest version of the Uuid library into your project:</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">"require"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"rhumsaa/uuid"</span><span class="p">:</span> <span class="s2">"~2.4"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/ramsey">ramsey</a></p>
