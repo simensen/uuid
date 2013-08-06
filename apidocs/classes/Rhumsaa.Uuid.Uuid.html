@@ -124,9 +124,7 @@ is a UUID) and a name (which is a string).</span><pre>uuid5()</pre></a></li>
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="method protected "><a href="#method___construct" title="__construct :: Creates a universally unique identifier (UUID) from the most significant
-bits and least significant bits."><span class="description">Creates a universally unique identifier (UUID) from the most significant
-bits and least significant bits.</span><pre>__construct()</pre></a></li>
+<li class="method protected "><a href="#method___construct" title="__construct :: Creates a universally unique identifier (UUID) from an array of fields."><span class="description">Creates a universally unique identifier (UUID) from an array of fields.</span><pre>__construct()</pre></a></li>
 <li class="method protected "><a href="#method_calculateUuidTime" title="calculateUuidTime :: Calculates the UUID time fields from a UNIX timestamp"><span class="description">Calculates the UUID time fields from a UNIX timestamp</span><pre>calculateUuidTime()</pre></a></li>
 <li class="method protected "><a href="#method_getNodeFromSystem" title="getNodeFromSystem :: Get the hardware address as a 48-bit positive integer."><span class="description">Get the hardware address as a 48-bit positive integer.</span><pre>getNodeFromSystem()</pre></a></li>
 <li class="method protected "><a href="#method_hasBigNumber" title="hasBigNumber :: Returns true if the system has Moontoast\Math\BigNumber"><span class="description">Returns true if the system has Moontoast\Math\BigNumber</span><pre>hasBigNumber()</pre></a></li>
@@ -890,13 +888,16 @@ is a UUID) and a name (which is a string).</h2>
 </div></div>
 </div>
 <a id="method___construct"></a><div class="element clickable method protected method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>Creates a universally unique identifier (UUID) from the most significant
-bits and least significant bits.</h2>
+<h2>Creates a universally unique identifier (UUID) from an array of fields.</h2>
 <pre>__construct(array $fields) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>Protected to prevent direct instantiation. Use static methods to create
 UUIDs.</p></div>
+<table class="table table-bordered"><tr>
+<th>link</th>
+<td><a href="Rhumsaa.Uuid.Uuid.html#method_getFields">Rhumsaa.Uuid.Uuid.html#method_getFields</a></td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$fields</h4>
@@ -1019,8 +1020,8 @@ BigNumber is not available</h2>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>This is initialized to the nil value.</p></div>
 <table class="table table-bordered"><tr>
-<th>see</th>
-<td><a href="Uuid.html#%5CRhumsaa%5CUuid%5CUuid::getFields">\Rhumsaa\Uuid\Uuid::getFields</a></td>
+<th>link</th>
+<td><a href="Rhumsaa.Uuid.Uuid.html#method_getFields">Rhumsaa.Uuid.Uuid.html#method_getFields</a></td>
 </tr></table>
 </div></div>
 </div>
@@ -1141,7 +1142,7 @@ BigNumber is not available</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2013-07-30T16:29:35-05:00.<br></footer></div>
+            generated on 2013-08-06T18:11:01-05:00.<br></footer></div>
 </div>
 <script type="text/javascript">
 
