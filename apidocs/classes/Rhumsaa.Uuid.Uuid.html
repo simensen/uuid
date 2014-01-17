@@ -89,6 +89,8 @@ to the RFC 4122 names for the fields.</span><pre>getFields()</pre></a></li>
 <li class="method public "><a href="#method_getFieldsHex" title="getFieldsHex :: Returns an array of the fields of this UUID, with keys named according
 to the RFC 4122 names for the fields."><span class="description">Returns an array of the fields of this UUID, with keys named according
 to the RFC 4122 names for the fields.</span><pre>getFieldsHex()</pre></a></li>
+<li class="method public "><a href="#method_getHex" title="getHex :: Returns the hexadecimal value of the UUID"><span class="description">Returns the hexadecimal value of the UUID</span><pre>getHex()</pre></a></li>
+<li class="method public "><a href="#method_getInteger" title="getInteger :: Returns the integer value of the UUID, represented as a BigNumber"><span class="description">Returns the integer value of the UUID, represented as a BigNumber</span><pre>getInteger()</pre></a></li>
 <li class="method public "><a href="#method_getLeastSignificantBits" title="getLeastSignificantBits :: Returns the least significant 64 bits of this UUID's 128 bit value"><span class="description">Returns the least significant 64 bits of this UUID's 128 bit value</span><pre>getLeastSignificantBits()</pre></a></li>
 <li class="method public "><a href="#method_getLeastSignificantBitsHex" title="getLeastSignificantBitsHex :: Returns the least significant 64 bits of this UUID's 128 bit value"><span class="description">Returns the least significant 64 bits of this UUID's 128 bit value</span><pre>getLeastSignificantBitsHex()</pre></a></li>
 <li class="method public "><a href="#method_getMostSignificantBits" title="getMostSignificantBits :: Returns the most significant 64 bits of this UUID's 128 bit value"><span class="description">Returns the most significant 64 bits of this UUID's 128 bit value</span><pre>getMostSignificantBits()</pre></a></li>
@@ -126,13 +128,18 @@ is a UUID) and a name (which is a string).</span><pre>uuid5()</pre></a></li>
                     <ul>
 <li class="method protected "><a href="#method___construct" title="__construct :: Creates a universally unique identifier (UUID) from an array of fields."><span class="description">Creates a universally unique identifier (UUID) from an array of fields.</span><pre>__construct()</pre></a></li>
 <li class="method protected "><a href="#method_calculateUuidTime" title="calculateUuidTime :: Calculates the UUID time fields from a UNIX timestamp"><span class="description">Calculates the UUID time fields from a UNIX timestamp</span><pre>calculateUuidTime()</pre></a></li>
+<li class="method protected "><a href="#method_getIfconfig" title="getIfconfig :: Returns the network interface configuration for the system"><span class="description">Returns the network interface configuration for the system</span><pre>getIfconfig()</pre></a></li>
 <li class="method protected "><a href="#method_getNodeFromSystem" title="getNodeFromSystem :: Get the hardware address as a 48-bit positive integer."><span class="description">Get the hardware address as a 48-bit positive integer.</span><pre>getNodeFromSystem()</pre></a></li>
 <li class="method protected "><a href="#method_hasBigNumber" title="hasBigNumber :: Returns true if the system has Moontoast\Math\BigNumber"><span class="description">Returns true if the system has Moontoast\Math\BigNumber</span><pre>hasBigNumber()</pre></a></li>
+<li class="method protected "><a href="#method_hasOpensslRandomPseudoBytes" title="hasOpensslRandomPseudoBytes :: Returns true if the system has openssl_random_pseudo_bytes()"><span class="description">Returns true if the system has openssl_random_pseudo_bytes()</span><pre>hasOpensslRandomPseudoBytes()</pre></a></li>
 <li class="method protected "><a href="#method_is64BitSystem" title="is64BitSystem :: Returns true if the system is 64-bit, false otherwise"><span class="description">Returns true if the system is 64-bit, false otherwise</span><pre>is64BitSystem()</pre></a></li>
 <li class="method protected "><a href="#method_uuidFromHashedName" title="uuidFromHashedName :: Returns a version 3 or 5 UUID based on the hash (md5 or sha1) of a
 namespace identifier (which is a UUID) and a name (which is a string)"><span class="description">Returns a version 3 or 5 UUID based on the hash (md5 or sha1) of a
 namespace identifier (which is a UUID) and a name (which is a string)</span><pre>uuidFromHashedName()</pre></a></li>
 </ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="method private "><a href="#method_generateBytes" title="generateBytes :: Generates random bytes for use in version 4 UUIDs"><span class="description">Generates random bytes for use in version 4 UUIDs</span><pre>generateBytes()</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
@@ -141,6 +148,9 @@ namespace identifier (which is a UUID) and a name (which is a string)</span><pre
 <li class="property public "><a href="#property_forceNoBigNumber" title="$forceNoBigNumber :: For testing, Moontoast\Math\BigNumber override; if true, treat as if
 BigNumber is not available"><span class="description">For testing, Moontoast\Math\BigNumber override; if true, treat as if
 BigNumber is not available</span><pre>$forceNoBigNumber</pre></a></li>
+<li class="property public "><a href="#property_forceNoOpensslRandomPseudoBytes" title="$forceNoOpensslRandomPseudoBytes :: For testing, openssl_random_pseudo_bytes() override; if true, treat as
+if openssl_random_pseudo_bytes() is not available"><span class="description">For testing, openssl_random_pseudo_bytes() override; if true, treat as
+if openssl_random_pseudo_bytes() is not available</span><pre>$forceNoOpensslRandomPseudoBytes</pre></a></li>
 <li class="property public "><a href="#property_ignoreSystemNode" title="$ignoreSystemNode :: For testing, system override to ignore generating node from hardware"><span class="description">For testing, system override to ignore generating node from hardware</span><pre>$ignoreSystemNode</pre></a></li>
 <li class="property public "><a href="#property_timeOfDayTest" title="$timeOfDayTest :: For testing, sets time of day to a static, known value"><span class="description">For testing, sets time of day to a static, known value</span><pre>$timeOfDayTest</pre></a></li>
 </ul>
@@ -160,6 +170,7 @@ BigNumber is not available</span><pre>$forceNoBigNumber</pre></a></li>
 <li class="constant  "><a href="#constant_RESERVED_MICROSOFT" title="RESERVED_MICROSOFT :: Reserved for Microsoft compatibility."><span class="description">Reserved for Microsoft compatibility.</span><pre>RESERVED_MICROSOFT</pre></a></li>
 <li class="constant  "><a href="#constant_RESERVED_NCS" title="RESERVED_NCS :: Reserved for NCS compatibility."><span class="description">Reserved for NCS compatibility.</span><pre>RESERVED_NCS</pre></a></li>
 <li class="constant  "><a href="#constant_RFC_4122" title="RFC_4122 :: Specifies the UUID layout given in RFC 4122."><span class="description">Specifies the UUID layout given in RFC 4122.</span><pre>RFC_4122</pre></a></li>
+<li class="constant  "><a href="#constant_VERSION" title="VERSION :: Version of the Rhumsaa\Uuid package"><span class="description">Version of the Rhumsaa\Uuid package</span><pre>VERSION</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -471,6 +482,32 @@ integer</li>
 <code>array</code>The UUID fields represented as hexadecimal values</div>
 </div></div>
 </div>
+<a id="method_getHex"></a><div class="element clickable method public method_getHex" data-toggle="collapse" data-target=".method_getHex .collapse">
+<h2>Returns the hexadecimal value of the UUID</h2>
+<pre>getHex() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getInteger"></a><div class="element clickable method public method_getInteger" data-toggle="collapse" data-target=".method_getInteger .collapse">
+<h2>Returns the integer value of the UUID, represented as a BigNumber</h2>
+<pre>getInteger() : \Moontoast\Math\BigNumber</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/Rhumsaa.Uuid.Exception.UnsatisfiedDependencyException.html">\Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException</a></code></th>
+<td>if Moontoast\Math\BigNumber is not present</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Moontoast\Math\BigNumber</code>BigNumber representation of the unsigned 128-bit integer value</div>
+</div></div>
+</div>
 <a id="method_getLeastSignificantBits"></a><div class="element clickable method public method_getLeastSignificantBits" data-toggle="collapse" data-target=".method_getLeastSignificantBits .collapse">
 <h2>Returns the least significant 64 bits of this UUID's 128 bit value</h2>
 <pre>getLeastSignificantBits() : \Moontoast\Math\BigNumber</pre>
@@ -780,7 +817,7 @@ number describes how this UUID was generated.</p>
 </ul>
 
 <p>Returns null if this UUID is not an RFC 4122 variant, since version
-is only meaningul for this variant.</p></div>
+is only meaningful for this variant.</p></div>
 <table class="table table-bordered"><tr>
 <th>link</th>
 <td><a href="http://tools.ietf.org/html/rfc4122#section-4.1.3">http://tools.ietf.org/html/rfc4122#section-4.1.3</a></td>
@@ -928,6 +965,25 @@ since 00:00:00.00, 15 October 1582.</p></div>
 <div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
+<a id="method_getIfconfig"></a><div class="element clickable method protected method_getIfconfig" data-toggle="collapse" data-target=".method_getIfconfig .collapse">
+<h2>Returns the network interface configuration for the system</h2>
+<pre>getIfconfig() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>todo</th>
+<td>Needs evaluation and possibly modification to ensure this works
+      well across multiple platforms.</td>
+</tr>
+<tr>
+<th>codeCoverageIgnore</th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
 <a id="method_getNodeFromSystem"></a><div class="element clickable method protected method_getNodeFromSystem" data-toggle="collapse" data-target=".method_getNodeFromSystem .collapse">
 <h2>Get the hardware address as a 48-bit positive integer.</h2>
 <pre>getNodeFromSystem() : string</pre>
@@ -939,11 +995,6 @@ its eighth bit set to 1 as recommended in RFC 4122. "Hardware address"
 means the MAC address of a network interface, and on a machine with
 multiple network interfaces the MAC address of any one of them may be
 returned.</p></div>
-<table class="table table-bordered"><tr>
-<th>todo</th>
-<td>Needs evaluation and possibly modification to ensure this works
-      well across multiple platforms.</td>
-</tr></table>
 <h3>Returns</h3>
 <div class="subelement response"><code>string</code></div>
 </div></div>
@@ -951,6 +1002,16 @@ returned.</p></div>
 <a id="method_hasBigNumber"></a><div class="element clickable method protected method_hasBigNumber" data-toggle="collapse" data-target=".method_hasBigNumber .collapse">
 <h2>Returns true if the system has Moontoast\Math\BigNumber</h2>
 <pre>hasBigNumber() : bool</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_hasOpensslRandomPseudoBytes"></a><div class="element clickable method protected method_hasOpensslRandomPseudoBytes" data-toggle="collapse" data-target=".method_hasOpensslRandomPseudoBytes .collapse">
+<h2>Returns true if the system has openssl_random_pseudo_bytes()</h2>
+<pre>hasOpensslRandomPseudoBytes() : bool</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -986,6 +1047,21 @@ namespace identifier (which is a UUID) and a name (which is a string)</h2>
 <div class="subelement response"><code><a href="../classes/Rhumsaa.Uuid.Uuid.html">\Rhumsaa\Uuid\Uuid</a></code></div>
 </div></div>
 </div>
+<a id="method_generateBytes"></a><div class="element clickable method private method_generateBytes" data-toggle="collapse" data-target=".method_generateBytes .collapse">
+<h2>Generates random bytes for use in version 4 UUIDs</h2>
+<pre>generateBytes(int $length) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$length</h4>
+<code>int</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_force32Bit"> </a><div class="element clickable property public property_force32Bit" data-toggle="collapse" data-target=".property_force32Bit .collapse">
@@ -998,6 +1074,13 @@ namespace identifier (which is a UUID) and a name (which is a string)</h2>
 <h2>For testing, Moontoast\Math\BigNumber override; if true, treat as if
 BigNumber is not available</h2>
 <pre>$forceNoBigNumber : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_forceNoOpensslRandomPseudoBytes"> </a><div class="element clickable property public property_forceNoOpensslRandomPseudoBytes" data-toggle="collapse" data-target=".property_forceNoOpensslRandomPseudoBytes .collapse">
+<h2>For testing, openssl_random_pseudo_bytes() override; if true, treat as
+if openssl_random_pseudo_bytes() is not available</h2>
+<pre>$forceNoOpensslRandomPseudoBytes : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -1135,6 +1218,12 @@ BigNumber is not available</h2>
 </tr></table>
 </div></div>
 </div>
+<a id="constant_VERSION"> </a><div class="element clickable constant  constant_VERSION" data-toggle="collapse" data-target=".constant_VERSION .collapse">
+<h2>Version of the Rhumsaa\Uuid package</h2>
+<pre>VERSION </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 </div>
 </div>
 </div>
@@ -1142,20 +1231,7 @@ BigNumber is not available</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2013-08-06T18:11:01-05:00.<br></footer></div>
+            generated on 2014-01-17T17:48:11-06:00.<br></footer></div>
 </div>
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-7239240-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 </body>
 </html>

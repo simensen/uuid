@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>Rhumsaa\Uuid » Rhumsaa\Uuid\Exception</title>
+<title>Rhumsaa\Uuid » \Rhumsaa\Uuid\Console\Util\ErrorHandler</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -51,47 +51,84 @@
                         </div></noscript>
 <div class="row">
 <div class="span4">
-<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
 <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
 </div>
-<ul class="side-nav nav nav-list">
-<li class="nav-header">
-<i class="icon-map-marker"></i> Namespaces</li>
-<li>
-<a href="../namespaces/Rhumsaa.Uuid.Exception.html" title="Exception"><i class="icon-th"></i>Exception</a><ul class="nav nav-list nav-namespaces"></ul>
-</li>
+<ul class="side-nav nav nav-list"><li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_handle" title="handle :: Error handler"><span class="description">Error handler</span><pre>handle()</pre></a></li>
+<li class="method public "><a href="#method_register" title="register :: Register error handler"><span class="description">Register error handler</span><pre>register()</pre></a></li>
 </ul>
+</li></ul>
 </div>
-<div class="span8 namespace-contents">
-<ul class="breadcrumb">
+<div class="span8">
+<a id="\Rhumsaa\Uuid\Console\Util\ErrorHandler"></a><ul class="breadcrumb">
 <li>
-<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
 <li><a href="../namespaces/Rhumsaa.html">Rhumsaa</a></li>
 <li>
 <span class="divider">\</span><a href="../namespaces/Rhumsaa.Uuid.html">Uuid</a>
 </li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Rhumsaa.Uuid.Console.html">Console</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Rhumsaa.Uuid.Console.Util.html">Util</a>
+</li>
 <li class="active">
-<span class="divider">\</span><a href="../namespaces/Rhumsaa.Uuid.Exception.html">Exception</a>
+<span class="divider">\</span><a href="../classes/Rhumsaa.Uuid.Console.Util.ErrorHandler.html">ErrorHandler</a>
 </li>
 </ul>
-<div class="namespace-indent">
+<div class="element class">
+<p class="short_description">Convert PHP errors into exceptions</p>
+<div class="details">
+<div class="long_description"></div>
 <h3>
-<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
-<div id="UnsatisfiedDependencyException" class="element ajax clickable class">
-<h1>UnsatisfiedDependencyException<a href="../classes/Rhumsaa.Uuid.Exception.UnsatisfiedDependencyException.html">¶</a>
-</h1>
-<p class="short_description">Thrown to indicate that the requested operation has depencies that have not
-been satisfied.</p>
-<div class="details collapse"></div>
-<a href="../classes/Rhumsaa.Uuid.Exception.UnsatisfiedDependencyException.html" class="more">« More »</a>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_handle"></a><div class="element clickable method public method_handle" data-toggle="collapse" data-target=".method_handle .collapse">
+<h2>Error handler</h2>
+<pre>handle(int $level, string $message, string $file, int $line) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code><p>Level of the error raised</p></div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>Error message</p></div>
+<div class="subelement argument">
+<h4>$file</h4>
+<code>string</code><p>Filename that the error was raised in</p></div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code><p>Line number the error was raised at</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.errorexception.php">\ErrorException</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
 </div>
-<div id="UnsupportedOperationException" class="element ajax clickable class">
-<h1>UnsupportedOperationException<a href="../classes/Rhumsaa.Uuid.Exception.UnsupportedOperationException.html">¶</a>
-</h1>
-<p class="short_description">Thrown to indicate that the requested operation is not supported.</p>
-<div class="details collapse"></div>
-<a href="../classes/Rhumsaa.Uuid.Exception.UnsupportedOperationException.html" class="more">« More »</a>
+<a id="method_register"></a><div class="element clickable method public method_register" data-toggle="collapse" data-target=".method_register .collapse">
+<h2>Register error handler</h2>
+<pre>register() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
 </div>
 </div>
 </div>
